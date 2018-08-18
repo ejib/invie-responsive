@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<!-- "Viewport" cambia la vista de la pagina para que se vea como desde un celular al momento de inspeccionar los elementos-->
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<link href="https://fonts.googleapis.com/css?family=Allerta|Montserrat:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="css/invie.css">
+		<title> WebDev - Precios </title>
+	</head>
+
+	
+
+
+	<body>
+
+		<header id="header" class="header background"> <!-- header -->
+			<div class="contenedor">
+				<figure class="logo"> <!-- logo -->
+					<img src="images/invie.png" alt="Invie logo" width="186" height="60">
+				</figure>
+
+				<span class="burger-button icon-menu" id="burger-button"></span>
+
+				<nav class="menu" id="menu"> <!-- menú -->
+					<ul>
+						<li>
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="index.html#guitarras">Guitarras</a>
+						</li>
+						<li>
+							<a href="precios.html">Precios</a>
+						</li>
+					</ul>	
+				</nav>				
+			</div>
+		</header>
+
+
+
+		<section class="tabla">
+			<div class="contenedor">
+				<table>
+					<thead>
+						<tr>
+							<th>Modelo</th>
+							<th>Precio</th>
+							<th>Descripción</th>
+							<th>Modelo</th>
+							<th>Precio</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Invie Classic</td>
+							<td>$198</td>
+							<td>Una guitarra muy pro.</td>
+							<td>Invie Classic</td>
+							<td>$198</td>
+							<td>Una guitarra muy pro.</td>
+						</tr>
+						<tr>
+							<td>Invie Acustica</td>
+							<td>$225</td>
+							<td>Una guitarra muy pro.</td>
+							<td>Invie Acustica</td>
+							<td>$225</td>
+							<td>Una guitarra muy pro.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>		
+
+
+
+		<footer class="footer">
+			<div class="contenedor">
+				<div class="contacto">
+					<img src="images/invie-white.png" alt="LOGO" height="70" width="218">
+					<div class="info">
+						<a href="tel:123456789"><strong>Telephone</strong><span>123456789</span></a>
+						<a href="mailto:ernestormd3@msn.com"><strong>E-mail</strong><span>ernestormd3@msn.com</span></a>
+					</div>
+				</div>
+				<form class="formulario">
+					<div class="col1">
+						<label for="name" class="title_label">Nombre</label>
+						<input type="text" id="name" name="name" required />
+
+						<label for="email" class="title_label">E-mail</label>
+						<input type="email" id="email" name="email" required />
+
+						<div class="gender">
+							<label for="male">
+								<input type="radio" checked id="male" name="gender" value="male" >Hombre
+							</label>
+							<label for="female">
+								<input type="radio" id="female" name="gender" value="female" >Mujer
+							</label>					
+						</div>
+
+						<div class="intereses">
+							<label for="quotation">
+								<input type="checkbox" id="quotation" name="" value="quotation" />Cotización
+							</label>
+
+							<label for="claims">
+								<input type="checkbox" id="claims" name="" value="claims" />Reclamos
+							</label>
+
+							<label for="comments">
+								<input type="checkbox" id="comments" name="" value="commets" />Comentarios
+							</label>
+
+							<label for="others">
+								<input type="checkbox" id="others" name="" value="others" />Others
+							</label>
+						</div>					
+					</div>
+
+					<div class="col2">
+						<div class="comment">
+							<label for="comment" class="title_label">Comentario</label>
+							<textarea name="comment" id="comment" cols="45" rows="12"></textarea>
+							<div class="boton_container">
+								<input type="submit" id="boton" name="" value="Enviar">
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+		<script type="text/javascript">
+
+			var consulta = window.matchMedia("(max-width: 500px)");
+			consulta.addListener(mediaQuery);
+
+			var $burgerButton = document.getElementById("burger-button");
+			var $menu = document.getElementById("menu");
+			function toggleMenu(){
+				$menu.classList.toggle("active")
+			};
+			
+			function showMenu(){
+				$menu.classList.add("active")
+			};
+
+			function hideMenu(){
+				$menu.classList.remove("active")
+			};
+			
+			function mediaQuery(){
+				if(consulta.matches){
+					console.log("Se cumple.");
+					$burgerButton.addEventListener("touchstart", toggleMenu);
+				}else{
+					console.log("No se cumple.");
+					$burgerButton.removeEventListener("touchstart", toggleMenu);
+				}				
+			}
+
+			mediaQuery();
+
+			//Lazy Loading.
+			var bLazy = new Blazy({
+    		selector: "img"
+			});
+			
+			//Gestures.
+			var $body = document.body;
+
+			var gesture = new Hammer($body);
+			
+			gesture.on('swiperight', showMenu);
+			gesture.on('swipeleft', hideMenu);
+			
+
+			
+
+			
+
+		</script>
+		
+	</body>
+
+
+
+
+</html>
+
+<!-- Módulo 24 - Usar Flexbox en CSS [Platzi - Curso de Desarrollo Web Online] -->
